@@ -26,8 +26,24 @@ namespace DotnetIteration
         //
         public static IEnumerable<string> Yelling(List<string> words)
         { 
-            var yelled = words.Select(word => word.ToUpper());
-            return yelled;
+            //P: Takes a list of strings called 'words'
+            //   Return a new list where those strings are uppercased.
+            //
+            //
+            //E List<string> words = {"hello", "my", "name", "is", "kento"}
+            //  List<string> newWords = {"HELLO", "MY", "NAME", "IS", "KENTO"}
+            //
+            //
+            //D Input: List<string> words
+            //  Output: List<string> words
+            //  .Select .Upper
+            //
+            //A
+            //  1. Take the list<string> words
+            //  2. And select all of the strings inside
+            //  3. And Uppercase them
+            //  4. To finally store them in another list
+            return words.Select(word => word.ToUpper());
         }
 
 
@@ -38,8 +54,23 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> Double(List<int> numbers)
         {
-            var doubled = numbers.Select(number => number*2);
-            return doubled;
+            //P Take a list of numbers 
+            //  and multiply each numbers in the list by 2. Then store them in another list.
+            //
+            //
+            //E {1, 2, 3, 4, 5, 6, 7} => {2, 4, 6, 8, 10, 12, 14}
+            //
+            //
+            //D Input: List<int> numbers
+            //  Output: List<int> new numbers
+            //  .Select
+            //  words * 2
+            //A 1. Take the list<int> numbers
+            //  2. And select all of the elements inside
+            //  3. Multiply them by 2
+            //  4. Then finally add them to the list
+            //
+            return numbers.Select(number => number * 2);
         }
 
 
@@ -51,8 +82,24 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> StringyIndexes(List<string> data)
         {
-            var indexInformation = data.Select((dataItem, indexNumber) =>  $"{dataItem} is at index {indexNumber}");
-            return indexInformation;
+            //P Take the list of strings called data, identify the index of each item
+            // return a new list with each items in the string by identifying their index 
+            // in the format "X is at index Y"
+            //
+            //E {"hello", "my", "name", "is", "kento"}
+            //  "Hello is at index 0", "my is at index 1", "Name is at index 2"
+            //
+            //
+            //D Input: List<string> data
+            //  Output: List<string> newData
+            //  .Select
+            //  $"{dataItem} is at index {indexSelected}
+            //A 1. Take the list<string> data
+            //  2. select all of the elements inside
+            //  3. identify the index of each element
+            //  4. return the string in the format: $"{dataItem} is at index {indexSelected}
+            //
+            return data.Select((dataItem, selectedIndex) => $"{dataItem} is at index {selectedIndex}");
         }
 
 
@@ -62,24 +109,24 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
         {
-            
-
-            //P: Taking the list of numbers and returning a new list of numbers that are even. 
-            // How to identify if a number is even.
+            //P Take the list of integers called data and identify elements in the list that are even.
+            //  Return a list of the numbers that are even.
             //
-            //E: List :    { 42, 50, 100, 5, -43, 17, 44 }
-            //   New List: { 42, 50, 100, 44 }
             //
-            //D: A list of int called Data : List<int> data
-            //   A list of int called newData: var = newData
-            //   % to find the remainder. 4 % 2 = 0
+            //E Before {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+            //  After {2, 4, 6, 8, 10, 12}
             //
-            //A: 
-            //  1. Take the list of numbers in data
-            var theSurvivingEvens = data.Where((dataItem) => dataItem % 2 == 0);
-            //  2. Select a the data item where the int % 2 = 0
-            return theSurvivingEvens;
-            //  3. return theSurvivingEvens
+            //
+            //D Input List<int> data
+            //  Output List<int> newData
+            //  data % 2 = 0
+            //  .Where
+            //A 1. Take the list of numbers
+            //  2. Select all of the elements inside
+            //  3. Identify elements where the remainder of 2 will equal 0
+            //  4. return the list of new integers as a list
+            //
+            return data.Where(dataItem => dataItem % 2 == 0);
         }
 
 
@@ -90,22 +137,24 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
         {
-            //P: Taking the list of numbers and returning a new list of numbers that are even. 
-            // How to identify if a number is even.
+            //P Take the list of integers and return elements where its indexes are even. 
+            //  The remainder of the index should equal to 0. 
             //
-            //E: List :    { 42, 50, 100, 5, -43, 17, 44 }
-            //   New List: { 42, 50, 100, 44 }
             //
-            //D: A list of int called Data : List<int> data
-            //   A list of int called newData: var = newData
-            //   % to find the remainder. 4 % 2 = 0
+            //E Before {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+            //  After { 1, 3, 5, 7, 9, 11}
             //
-            //A: 
-            //  1. Take the list of numbers in data
-            var theSurvivingEvenIndexes = data.Where((dataItem, index) => index % 2 == 0);
-            //  2. Select a the data item where the int % 2 = 0
-            return theSurvivingEvenIndexes;
-            //  3. return theSurvivingEvens
+            //
+            //D input List<int> data
+            //  output List<int> data
+            //  .Where
+            //  index % 2 = 0
+            //A 1. Take the list<int> data
+            //  2. Identify its index
+            //  3. Then find the index numbers where its remainder of 2 will equal to 0
+            //  4. return a new list that have the indexes where it's remainder of 2 equal to 0. 
+            //
+            return data.Where((dataItem, index) => index % 2 == 0);
         }
 
 
@@ -124,25 +173,24 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> BestMovieOfTheYear(List<Movie> data, int year)
         {
-            //P: Taking the list of objects and returning a new list of strings with the name of the movie of that year.
-            // How to identify if a number is even.
+           //P Take the list of Movies and its year and find the names of the movies of that year who's
+            // score is more than 90.
             //
-            //E: List(Object) :     name: "Get Out",
-            //                      year: "2017",
-            //                      score: 99
-            //   New List(string):  name: Get Out
             //
-            //D: A list of objects called data : List<Movie> data
-            //   A list of strings called newData: List<string> newData
-            //   An integer: Movie.Year
+            //E Movie: name - Get Out, year: 2017, score: 99;
+            //  Movie: name - Gravity, year: 2017, score 92;
             //
-            //A: 
-            //  1. Take the list of numbers in data
+            //
+            //D Input: List<Movie> data, int year
+            //  Output: List<string> movie.Name, List<string> movie.Year
+            //  movie.Score > 90
+            //  .Where .Select
+            //A 1. Take the list of movies
+            //  2. Find the movie of the year given
+            //  3. and also Find the movie who's score is over 90
+            //  4. return the name of the movie
+            //
             return data.Where(movie => movie.Year == year && movie.Score > 90).Select(movie => movie.Name);
-            //  2. Select a the data item where the Year = year
-            //  3. Return the Name of that dataItem
-          
-            //  3. return theSurvivingEvens
         }
 
 
@@ -152,7 +200,23 @@ namespace DotnetIteration
         // 
         public static bool EveryoneIsOdd(List<int> data)
         {
-            return data.All(number => number%2 == 1); 
+            //P Take the list of numbers called data, identify if the elements in the list
+            // is odd, if they are return true
+            //
+            //
+            //E True = {1, 3, 5, 7, 9}
+            //  False = {1, 3, 4, 5, 7, 9}
+            //
+            //
+            //D input: List<int> data
+            //  output: bool EveryoneIsOdd = true
+            //  if the element's remainder of 2 == 1
+            //  .All
+            //A 1. Take the list of numbers
+            //  2. identify if they are odd by finding the remainder of 2. 
+            //  3. If the remainder = 1, return a bool == true
+            //
+            return data.All(dataItem => dataItem % 2 == 1);
         }
 
 
@@ -163,28 +227,23 @@ namespace DotnetIteration
         // 
         public static string FindTheNeedle(List<string> data)
         {
-
-            var findTheNeedle =  data.Single(dataItem => dataItem.Contains("needle"));
-            return findTheNeedle;
-           
-
-            //P: Taking the list of strings and returning the one that includes "needle"
-            // 
+            //P Take a list of string called data, find the element that includes the word "needle"
+            // Return the element where that word is included
             //
-            //E: Input List(string) :  "one", "time", "there was a needle at", "the market"
-            //   Output (string): "there was a needle at"                   
-            //                      
-            //   
             //
-            //D: A list of strings called data : "one", "time", "there was a needle at", "the market"
-            //   return the string: "there was a needle at"
-            //   
+            //E Before { "one", "time", "there was a needle at", "the market" }
+            //  After {"There was a needle at"}
             //
-            //A: 
-            //  1. First take the list of strings called 'data' 
-            //  2. Find the item in data that includes the string "needle"
-            //  3. return 
-            //  4. 
+            //
+            //D input: List <string> data
+            //  output: string that includes "needle"
+            //  .contain .Where
+            //
+            //A 1. Take the list of strings,
+            //  2. Find the element that contains the word "needle"
+            //  3. return that element.
+            //
+            return data.Single(dataItem => dataItem.Contains("needle"));
         }
 
 
@@ -195,24 +254,24 @@ namespace DotnetIteration
         // 
         public static int FindTheNeedleIndex(List<string> data)
         {
-            //P: Taking the list of strings and returning the one that includes "needle." Then find the index of 
-            // 
+            //P Take the list of strings, find its index where the word "needle" exists.
+            //return the index of that string.
             //
-            //E: Input List(string) :  "one", "time", "there was a needle at", "the market"
-            //   Output (string): "there was a needle at"                   
-            //                      
-            //   
             //
-            //D: A list of strings called data : "one", "time", "there was a needle at", "the market"
-            //   return the string: "there was a needle at"
-            //   
+            //E "this", "is alot", "of Information", "but thank god", "I found the needle",
             //
-            //A: 
-            //  1. First take the list of strings called 'data' 
+            //
+            //
+            //D Input: List<string> data               
+            //  Output: List<string> data[index], int index
+            //  .contains .FindIndex
+            //
+            //A 1. Take the list called data
+            //  2. find the element in the list that includes the string "needle"
+            //  3. Find the index number of that particular string we pulled up
+            //  4. return the index number
+            //
             return data.FindIndex(dataItem => dataItem.Contains("needle"));
-            //  2. Find the item in data that includes the string "needle"
-            //  3. return 
-            //  4. 
         }
 
 
@@ -223,7 +282,23 @@ namespace DotnetIteration
         // 
         public static bool SomeoneToLove(List<string> data)
         {
-            return data.Any(dataItem => dataItem.Count() == 4);
+            //P Take the list of string called data, identify if at least one string 
+            // is exactly 4 characters long. Return boolean.
+            //
+            //
+            //E Before {"ohooo", "ho", "hohoh, "ohohoo", "ohoo"}
+            //  After {"ohoo"} = .Length = 4
+            //
+            //
+            //D Input: List<string> data
+            //  Output: bool = true
+            //  .Any .Length()
+            //
+            //A 1. Take the list of string
+            //  2. identify if any have exactly 4 characters long
+            //  3. return bool
+            //
+            return data.Any(canAnybodyFindMeSomebodyToLoveByFreddieMercury => canAnybodyFindMeSomebodyToLoveByFreddieMercury.Length == 4);
         }
     }
 }
